@@ -76,3 +76,10 @@ For convenience, if any text region is selected in the editor, only that region 
 MIT License as of February 10, 2023, changed by generous sponsors
 [Fleet Device Management](https://fleetdm.com/) and [Reflect](https://reflect.app/).
 Existing licensees may continue under the GPLv3 or switch to the new license.
+
+
+```
+make deps/version-3.50.4/sqlite3.c deps/extension-functions.c WASQLITE_EXTRA_DEFINES="-DSQLITE_ENABLE_FTS5"
+
+make WASQLITE_EXTRA_DEFINES="-DSQLITE_ENABLE_FTS5"
+```
