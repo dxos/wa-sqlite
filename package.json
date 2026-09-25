@@ -22,6 +22,8 @@
     "build-docs": "typedoc",
     "start": "web-dev-server --node-resolve",
     "test": "web-test-runner",
+    "test-node": "node --test 'test/node/*.test.mjs'",
+    "patch-dist": "node scripts/patch-dist-textdecoder.mjs",
     "test-manual": "web-test-runner --manual"
   },
   "devDependencies": {

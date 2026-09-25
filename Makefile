@@ -23,6 +23,7 @@ JSFILES = \
 	src/libfunction.js \
 	src/libhook.js \
 	src/libprogress.js \
+	src/libtextdecoder.js \
 	src/libvfs.js
 
 vpath %.c src
@@ -73,6 +74,7 @@ EMFLAGS_INTERFACES = \
 
 EMFLAGS_LIBRARIES = \
 	--js-library src/libadapters.js \
+	--js-library src/libtextdecoder.js \
 	--post-js src/libauthorizer.js \
 	--post-js src/libfunction.js \
 	--post-js src/libhook.js \
