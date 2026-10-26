@@ -1,5 +1,12 @@
 # @effect/wa-sqlite
 
+## 0.2.2
+
+### Patch Changes
+
+- [`be69e52`](https://github.com/dxos/wa-sqlite/commit/be69e52d1ebb6ba8784c4833955d05f7878c8844) Keep the wasm name section in `dist/` (`--profiling-funcs`), so DevTools profiles name SQLite's functions instead of `wasm-function[N]`. FTS5 is now a default define, and `dist/` is rebuilt with emsdk 4.0.23.
+- [`c71bf7a`](https://github.com/dxos/wa-sqlite/commit/c71bf7a163fbfb282e65a8f83664dac1a44bfc56) Bound Emscripten's TextDecoders under Safari 18's per-instance cap.
+
 ## 0.2.1
 
 ### Patch Changes
