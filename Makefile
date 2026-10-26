@@ -63,9 +63,12 @@ EMFLAGS_DEBUG = \
 	-g -Oz \
 	$(EMFLAGS_COMMON)
 
+# --profiling-funcs keeps the wasm name section, so a production profile names SQLite's own
+# functions (sqlite3VdbeExec, sqlite3BtreeIndexMoveto, ...) instead of wasm-function[N].
 EMFLAGS_DIST = \
 	-Oz \
 	-flto \
+	--profiling-funcs \
 	$(EMFLAGS_COMMON)
 
 EMFLAGS_INTERFACES = \
@@ -113,6 +116,7 @@ WASQLITE_DEFINES = \
 	-DSQLITE_THREADSAFE=0 \
 	-DSQLITE_USE_ALLOCA \
 	-DSQLITE_ENABLE_BATCH_ATOMIC_WRITE \
+	-DSQLITE_ENABLE_FTS5 \
 	$(WASQLITE_EXTRA_DEFINES)
 
 # directories

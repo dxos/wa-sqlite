@@ -77,9 +77,17 @@ MIT License as of February 10, 2023, changed by generous sponsors
 [Fleet Device Management](https://fleetdm.com/) and [Reflect](https://reflect.app/).
 Existing licensees may continue under the GPLv3 or switch to the new license.
 
+## Building the DXOS fork
+
+`dist/` is committed and is what gets published, so rebuild it with the same toolchain each time:
+[emsdk](https://github.com/emscripten-core/emsdk) 4.0.23.
 
 ```
-make deps/version-3.50.4/sqlite3.c deps/extension-functions.c WASQLITE_EXTRA_DEFINES="-DSQLITE_ENABLE_FTS5"
-
-make WASQLITE_EXTRA_DEFINES="-DSQLITE_ENABLE_FTS5"
+./emsdk install 4.0.23 && ./emsdk activate 4.0.23 && source ./emsdk_env.sh
+make spotless && make dist
 ```
+
+The Makefile enables FTS5 (ECHO's full-text index needs it) and builds the dist with
+`--profiling-funcs`, which keeps the wasm name section: a DevTools profile then names SQLite's own
+functions (`sqlite3VdbeExec`, `sqlite3BtreeIndexMoveto`, ...) instead of `wasm-function[N]`. The
+section adds about 50 KB to the uncompressed `.wasm`; the optimization flags and the code size are unchanged.
